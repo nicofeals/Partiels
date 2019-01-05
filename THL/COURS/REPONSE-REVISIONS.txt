@@ -1,0 +1,80 @@
+Les coquilles du sujet :
+1b : i peut valoir 3 bien sur !
+2a : C'est la "hierarchie" et pas "hierarchoe"
+
+1.
+a. Oui
+b. Vrai
+c. Vrai (attention, ce  n'est pas forcement le langage le plus precis, cf a.)
+d. cf cours, rajouter le '+' unaire de la meme maniere qu'on trouve le '-' unaire
+e. Noam, il a beaucoup apporte a la thl, notamment la hierarchie de Chomsky (les types de grammaire)
+f. Faux, c'est un grand linguiste
+g. Vrai (sinon, ce serait trop facile) (ie il n'existe pas d'algo permettant de determiner...)
+h. Non (le parseur peut ne pas etre competent, un parseur LL dans certains cas par exemple : cf j. ci-apres)
+i. Vrai (attention a la reciproque qui n'est pas vraie)
+j. LL choisit en tete de regle (LR choisit en fin de regle), ce qui peut amener a un probleme de decidabilite si 2 regles commencent par les memes symboles (problem des facteurs commuins en tete de regle). Une autre maladie de LL : quand un symbole s'appelle lui-meme (meme si ca ne se fait qu'apres plusieurs iterations) : le parseur boucle et c'est mal pour LL.
+
+
+Les types de grammaire a reconnaitre :
+
+   1. 
+	S -> aB
+	S -> bA
+	A -> a
+	A -> aS
+	A -> bAA
+	B -> b
+	B -> bS
+	B -> aBB
+a. Hors-contexte
+b. Non ambigue (on n'a pas trouve de contre-exemple, c'est chaud a prouver...)
+c. Cette grammaire engendre le langage des mots comprenant autant de 'a' que de 'b' (et aucun autre caractere)
+C'est l'union des n de 0 a l'infini et des m de 0 a l'infini de (a^nb^n | b^ma^m)+
+d. Le langage engendre est hors-contexte (il n'est pas rationnel, cf c. et il existe une grammaire Hors-contexte le generant)
+e. D'apres le theorme de Kleene : langage regulier ssi langage d'un automate fini. Or notre langage n'est pas rationnel, donc, il n'existe pas d'automate fini le generant.
+   2. 
+	S -> aA
+	S -> bB
+	A -> aA
+	A -> aS
+	A -> bB
+	B -> bB
+	B -> b
+	B -> a
+	S -> a
+a. Reguliere / Rationnelle / Lineaire a droite
+
+   3. 
+	E -> T
+	E -> T + T
+	T -> F
+	T -> F * F
+	F -> i
+a. Hors-contexte
+b. Ambigue (Associativite)
+c. arithmetique des '+' et des '*' pour des i
+d. langage engendre rationnel (i[+*])*i
+e. cf cours
+   4. 
+	A -> aB
+	A -> bC
+	B -> aA
+	B -> bD
+	B -> b
+	C -> aD
+	C -> bA
+	C -> a
+	D -> aC
+	D -> bB
+a. Reguliere / Rationnelle / Lineaire a droite
+b. ?
+c. Grammaire generant le langage des nombres impairs de a et de b
+d. langage rationnel (on arrive a determiner un automate fini le decrivant, cf e.)
+e. 
+            a
+ ---> 0,0 <---> 0,1
+       |         |
+       | b       | b
+       |         | 
+      1,0 <---> 1,1 --->
+            a
